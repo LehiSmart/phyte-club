@@ -1,0 +1,359 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --color-green-dark: #1E3A2F; /* Deep Forest */
+    --color-green-light: #6A9E60; /* Vibrant Leaf */
+    --color-terracotta: #B0695B;
+    --color-white: #FFFFFF;
+    --color-off-white: #F4F4F4;
+    --color-black: #1A1A1A;
+    --padding-large: 6rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Georgia', serif; /* Organic feel for headings */
+    color: var(--color-black);
+    line-height: 1.6;
+    background-color: var(--color-off-white);
+    scroll-behavior: smooth; /* For navigation links */
+}
+
+h1, h2, h3 {
+    font-family: 'Arial', sans-serif; /* Clean contrast for titles */
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.dark-bg {
+    background-color: var(--color-green-dark);
+    color: var(--color-white);
+}
+
+.light-bg {
+    background-color: var(--color-off-white);
+    color: var(--color-black);
+}
+
+/* --- Vertical Emphasis: Full Viewport Sections --- */
+.full-viewport-section {
+    min-height: 100vh; /* Critical for vertical emphasis */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.content-section {
+    padding: var(--padding-large) 0;
+    overflow: hidden; /* Clear floats/grids */
+}
+
+/* --- 01. Hero Section --- */
+#hero {
+    background-color: #000; /* Ensures visibility of text over media */
+}
+.hero-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('greenery.jpg'); /* Replace with actual media */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    z-index: 1;
+}
+.hero-content {
+    z-index: 2;
+    color: var(--color-white);
+}
+.cta-buttons a {
+    margin: 0 10px;
+}
+
+/* --- Navigation --- */
+#main-nav {
+    position: sticky;
+    top: 0;
+    background: rgba(30, 58, 47, 0.95); /* Semi-transparent dark green */
+    padding: 1rem 0;
+    z-index: 100;
+}
+#main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+#main-nav ul li a {
+    color: var(--color-white);
+    text-decoration: none;
+    padding: 0 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    margin-top: 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.btn-primary {
+    background: var(--color-green-light);
+    color: var(--color-black);
+    border: 2px solid var(--color-green-light);
+}
+.btn-secondary {
+    background: none;
+    color: var(--color-white);
+    border: 2px solid var(--color-terracotta);
+}
+
+/* --- 03. Showcase Grid --- */
+#showcase .masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0 2rem;
+}
+.masonry-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+.grid-item {
+    background: var(--color-black);
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* --- 04. Volunteer Funnel --- */
+.process-funnel {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.process-funnel .step {
+    flex: 1;
+    padding: 0 20px;
+    border-right: 2px solid var(--color-green-light);
+}
+.process-funnel .step:last-child {
+    border-right: none;
+}
+#volunteer-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 05. News Timeline --- */
+.vertical-timeline {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 50px; /* Space for the line */
+}
+.vertical-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-terracotta);
+}
+.news-entry {
+    margin-bottom: 40px;
+    position: relative;
+}
+.news-entry::before {
+    content: '🌿'; /* Custom plant bullet point */
+    position: absolute;
+    left: -35px;
+    top: 0;
+    font-size: 1.5rem;
+    color: var(--color-green-light);
+}
+
+/* --- 06. Shop Vertical List --- */
+.product-list-vertical {
+    display: flex;
+    flex-direction: column; /* Forces strict vertical stacking */
+    max-width: 500px; /* Constrain width for single-column emphasis */
+    margin: 0 auto;
+    gap: 30px;
+}
+.product-item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: var(--color-white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.product-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.product-item h3, .product-item p {
+    text-align: left;
+    margin: 0;
+}
+.product-item .price {
+    font-weight: bold;
+    color: var(--color-terracotta);
+}
+
+/* --- Footer / Contact --- */
+#contact {
+    text-align: center;
+    padding: 4rem 0;
+}
+.map-placeholder {
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 2rem 0;
+    border: 1px solid var(--color-white);
+}
+
+/* --- Media Query for Mobile and Small Tablets (Max Width: 768px) --- */
+@media (max-width: 390px) {
+    /* All mobile-specific styles go in here */
+    
+    /* Global Adjustments */
+    .content-section {
+        padding: 4rem 1rem; /* Reduce large padding */
+    }
+    .container {
+        padding: 0 1rem; /* Reduce horizontal margin */
+    }
+    h1 {
+        font-size: 2.5rem; /* Make header smaller */
+    }
+
+    /* 01. Hero / Entrance */
+    .hero-content {
+        padding: 0 10px;
+    }
+    .cta-buttons {
+        display: flex; /* Stack buttons vertically if needed */
+        flex-direction: column;
+        gap: 10px;
+    }
+    .cta-buttons a {
+        width: 100%; /* Make buttons full width */
+        margin: 5px 0;
+    }
+
+    /* 02. Navigation Bar Fix */
+    #main-nav ul {
+        /* * FIX 1: Force elements to stack vertically 
+         * The default desktop behavior was horizontal. 
+         */
+        flex-direction: column; 
+        
+        /* FIX 2: Ensure the list takes up the full width */
+        width: 100%;
+        
+        /* Center the text within the stacked links */
+        text-align: center;
+        
+        /* Reduce padding/margin to prevent unnecessary scrolling */
+        padding: 0;
+        margin: 0;
+    }
+    
+    #main-nav ul li {
+        /* Make each list item occupy full width */
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+    }
+
+    #main-nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    #main-nav ul li a {
+        /* Give links a larger vertical hit area for tapping */
+        display: block;
+        padding: 10px 0; 
+        
+        /* Remove the horizontal padding that was causing overflow */
+        margin: 0;
+    }
+    
+    /* 03. Greenhouse Showcase (Masonry Grid) */
+    #showcase .masonry-grid {
+        /* Change from a multi-column grid to a single column */
+        grid-template-columns: 1fr; 
+    }
+
+    /* 04. Volunteer Funnel */
+    .process-funnel {
+        /* Stack the steps vertically for readability */
+        flex-direction: column; 
+        gap: 20px;
+    }
+    .process-funnel .step {
+        border-right: none; /* Remove horizontal separator */
+        border-bottom: 1px solid var(--color-green-light); /* Add vertical separator */
+        padding-bottom: 20px;
+    }
+    .process-funnel .step:last-child {
+        border-bottom: none;
+    }
+
+    /* 05. News Timeline */
+    .vertical-timeline {
+        padding-left: 20px; /* Reduce padding to use screen space */
+    }
+    .vertical-timeline::before {
+        left: 5px; /* Move the timeline line to the edge */
+    }
+    .news-entry::before {
+        left: -20px; /* Adjust bullet point position */
+    }
+
+    /* 06. Online Shop (The most challenging section) */
+    .product-list-vertical {
+        max-width: 100%; /* Allow the list to expand */
+    }
+    .product-item {
+        /* Change product layout to stack image and text vertically */
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .product-item img {
+        width: 100%; /* Image takes full width */
+        height: auto;
+        max-height: 200px;
+        margin-bottom: 10px;
+    }
+}
