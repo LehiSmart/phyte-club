@@ -15,18 +15,35 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
 body {
     font-family: 'Georgia', serif; /* Organic feel for headings */
     color: var(--color-black);
     line-height: 1.6;
     background-color: var(--color-off-white);
-    scroll-behavior: smooth; /* For navigation links */
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
     font-family: 'Arial', sans-serif; /* Clean contrast for titles */
     text-align: center;
     margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+}
+
+h2 {
+    font-size: clamp(1.7rem, 4.5vw, 2.3rem);
+}
+
+p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
 }
 
 .container {
@@ -80,9 +97,18 @@ h1, h2, h3 {
 .hero-content {
     z-index: 2;
     color: var(--color-white);
+    width: min(100%, 700px);
+    padding: 0 1.25rem;
+}
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
 }
 .cta-buttons a {
-    margin: 0 10px;
+    margin: 0;
 }
 
 /* --- Navigation --- */
@@ -242,57 +268,51 @@ h1, h2, h3 {
     border: 1px solid var(--color-white);
 }
 
-/* --- Media Query for Mobile and Small Tablets (Max Width: 768px) --- */
-@media (max-width: 390px) {
-    /* All mobile-specific styles go in here */
-    
-    /* Global Adjustments */
+/* --- Responsive Improvements for Mobile and Small Tablets --- */
+@media (max-width: 768px) {
     .content-section {
-        padding: 4rem 1rem; /* Reduce large padding */
+        padding: 4rem 1rem;
     }
+
     .container {
-        padding: 0 1rem; /* Reduce horizontal margin */
-    }
-    h1 {
-        font-size: 2.5rem; /* Make header smaller */
+        padding: 0 1rem;
     }
 
-    /* 01. Hero / Entrance */
+    .full-viewport-section {
+        min-height: auto;
+        padding: 5rem 0;
+    }
+
     .hero-content {
-        padding: 0 10px;
-    }
-    .cta-buttons {
-        display: flex; /* Stack buttons vertically if needed */
-        flex-direction: column;
-        gap: 10px;
-    }
-    .cta-buttons a {
-        width: 100%; /* Make buttons full width */
-        margin: 5px 0;
+        padding: 0 1rem;
     }
 
-    /* 02. Navigation Bar Fix */
-    #main-nav ul {
-        /* * FIX 1: Force elements to stack vertically 
-         * The default desktop behavior was horizontal. 
-         */
-        flex-direction: column; 
-        
-        /* FIX 2: Ensure the list takes up the full width */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cta-buttons a {
         width: 100%;
-        
-        /* Center the text within the stacked links */
         text-align: center;
-        
-        /* Reduce padding/margin to prevent unnecessary scrolling */
+    }
+
+    #main-nav {
+        padding: 0.75rem 0;
+    }
+
+    #main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
         padding: 0;
         margin: 0;
+        gap: 0.25rem;
     }
-    
+
     #main-nav ul li {
-        /* Make each list item occupy full width */
         width: 100%;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     #main-nav ul li:last-child {
@@ -300,60 +320,57 @@ h1, h2, h3 {
     }
 
     #main-nav ul li a {
-        /* Give links a larger vertical hit area for tapping */
         display: block;
-        padding: 10px 0; 
-        
-        /* Remove the horizontal padding that was causing overflow */
+        padding: 0.7rem 0;
         margin: 0;
     }
-    
-    /* 03. Greenhouse Showcase (Masonry Grid) */
+
     #showcase .masonry-grid {
-        /* Change from a multi-column grid to a single column */
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
+        padding: 0 0.5rem;
     }
 
-    /* 04. Volunteer Funnel */
     .process-funnel {
-        /* Stack the steps vertically for readability */
-        flex-direction: column; 
-        gap: 20px;
+        flex-direction: column;
+        gap: 1.25rem;
     }
+
     .process-funnel .step {
-        border-right: none; /* Remove horizontal separator */
-        border-bottom: 1px solid var(--color-green-light); /* Add vertical separator */
-        padding-bottom: 20px;
+        border-right: none;
+        border-bottom: 1px solid var(--color-green-light);
+        padding-bottom: 1rem;
     }
+
     .process-funnel .step:last-child {
         border-bottom: none;
     }
 
-    /* 05. News Timeline */
     .vertical-timeline {
-        padding-left: 20px; /* Reduce padding to use screen space */
-    }
-    .vertical-timeline::before {
-        left: 5px; /* Move the timeline line to the edge */
-    }
-    .news-entry::before {
-        left: -20px; /* Adjust bullet point position */
+        padding-left: 1.5rem;
     }
 
-    /* 06. Online Shop (The most challenging section) */
-    .product-list-vertical {
-        max-width: 100%; /* Allow the list to expand */
+    .vertical-timeline::before {
+        left: 0.35rem;
     }
+
+    .news-entry::before {
+        left: -1.25rem;
+    }
+
+    .product-list-vertical {
+        max-width: 100%;
+    }
+
     .product-item {
-        /* Change product layout to stack image and text vertically */
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
     }
+
     .product-item img {
-        width: 100%; /* Image takes full width */
+        width: 100%;
         height: auto;
-        max-height: 200px;
-        margin-bottom: 10px;
+        max-height: 220px;
+        margin-bottom: 0.75rem;
     }
 }
