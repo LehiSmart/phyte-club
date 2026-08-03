@@ -17,7 +17,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: 100px;
 }
 
 body {
@@ -118,11 +118,51 @@ p {
     background: rgba(30, 58, 47, 0.95); /* Semi-transparent dark green */
     padding: 1rem 0;
     z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    isolation: isolate;
+}
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.28rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    cursor: pointer;
+    padding: 0.55rem;
+    min-width: 2.8rem;
+    min-height: 2.8rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.nav-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+.nav-toggle span {
+    display: block;
+    width: 1.4rem;
+    height: 2px;
+    background: var(--color-white);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.nav-toggle.is-active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle.is-active span:nth-child(2) {
+    opacity: 0;
+}
+.nav-toggle.is-active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 #main-nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 #main-nav ul li a {
     color: var(--color-white);
@@ -298,16 +338,46 @@ p {
     }
 
     #main-nav {
-        padding: 0.75rem 0;
+        padding: 0.75rem 1rem;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        position: sticky;
+        overflow: visible;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+        position: relative;
+        z-index: 120;
+        pointer-events: auto;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        margin-left: auto;
     }
 
     #main-nav ul {
+        display: none;
         flex-direction: column;
         width: 100%;
         text-align: center;
         padding: 0;
-        margin: 0;
+        margin: 0.6rem 0 0;
         gap: 0.25rem;
+        background: rgba(30, 58, 47, 0.95);
+        border-radius: 0.75rem;
+        overflow: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 110;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    #main-nav ul.is-open {
+        display: flex;
     }
 
     #main-nav ul li {

@@ -1,4 +1,5 @@
 // app.js
+import {Analytics} from '@vercel/analytics/next';
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -6,15 +7,26 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                const navHeight = document.getElementById('main-nav')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
     // --- Dynamic Navigation Style (Optional Enhancement) ---
-    // If you want the navigation bar to change on scroll:
     const nav = document.getElementById('main-nav');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
             nav.style.backgroundColor = 'var(--color-green-dark)'; // Solid dark color
@@ -22,6 +34,43 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.backgroundColor = 'rgba(30, 58, 47, 0.95)'; // Transparent/lighter
         }
     });
+
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const isOpen = navLinks.classList.toggle('is-open');
+            navToggle.classList.toggle('is-active', isOpen);
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!navLinks.contains(event.target) && !navToggle.contains(event.target)) {
+                navLinks.classList.remove('is-open');
+                navToggle.classList.remove('is-active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('is-open');
+                    navToggle.classList.remove('is-active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('is-open');
+                navToggle.classList.remove('is-active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
 
     // --- Volunteer Form Submission (Placeholder) ---
     const form = document.getElementById('volunteer-form');
