@@ -1,14 +1,9 @@
----
-name: HTML Starter
-slug: html-starter-with-analytics
-description: HTML5 template with analytics and advanced routing configuration.
-deployUrl: https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/html&project-name=html
-relatedTemplates:
-  - nextjs-boilerplate
----
+# Website for Aberystwyth PhyteClub Society 
 
-# HTML Starter
-
-This is a starter HTML5 templates which is configured with Vercel Analytics (through a `script` tag), advanced routing with [Vercel Edge Middleware](https://vercel.com/docs/concepts/functions/edge-middleware), as well as some basic styles
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/html&project-name=html)
+Building a website for this society requires it to be;
+- Mobile friendly as students often use it
+- The ability for students to join or volunteer
+- A section for people to purchase/book a plant for purchase
+- Basic contact details and socials
+- About sections
+- Schedule to keep students up to date

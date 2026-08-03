@@ -1,8 +1,7 @@
-// app.js
+//app.js
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Smooth Scrolling for Navigation ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -21,16 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Dynamic Navigation Style (Optional Enhancement) ---
     const nav = document.getElementById('main-nav');
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.getElementById('nav-links');
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
-            nav.style.backgroundColor = 'var(--color-green-dark)'; // Solid dark color
+            nav.style.backgroundColor = 'var(--color-green-dark)';
         } else {
-            nav.style.backgroundColor = 'rgba(30, 58, 47, 0.95)'; // Transparent/lighter
+            nav.style.backgroundColor = 'rgba(30, 58, 47, 0.95)';
         }
     });
 
@@ -71,17 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Volunteer Form Submission (Placeholder) ---
     const form = document.getElementById('volunteer-form');
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            // CRITICAL STEP: 
-            // 1. Gather form data (e.g., using new FormData(form))
-            // 2. Send data to the server-side endpoint (PHP, Node.js, etc.) 
-            //    or an integrated service like a Google Sheet/Mailchimp.
-            // 3. Display success/error message to the user.
             
             console.log("Form submission attempted. Needs backend handler.");
             alert("Application submitted! (Requires backend integration)");
